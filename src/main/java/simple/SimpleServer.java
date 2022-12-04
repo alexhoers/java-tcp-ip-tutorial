@@ -1,21 +1,18 @@
 package simple;
 
+import base.BaseServer;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
-import java.net.Socket;
 
 /**
  * A simple server socket class which is exchanges messages with a client.
  * The server can only send one greeting response before it closes its connection.
  */
-public class SimpleServer {
-    private ServerSocket serverSocket;
-    private Socket clientSocket;
-    private PrintWriter out;
-    private BufferedReader in;
+public class SimpleServer extends BaseServer {
 
     /**
      * Start the simple server and block requests until a client connects is established.
@@ -40,17 +37,6 @@ public class SimpleServer {
             out.println("unrecognised greeting");
         }
         stop();
-    }
-
-    /**
-     * Close all connections of the client and server sockets
-     * @throws IOException IO error when closing the sockets
-     */
-    public void stop() throws IOException {
-        in.close();
-        out.close();
-        clientSocket.close();
-        serverSocket.close();
     }
 
     public static void main(String[] args) throws IOException {

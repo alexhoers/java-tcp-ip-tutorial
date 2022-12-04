@@ -34,8 +34,7 @@ public class SimpleClient {
      */
     public String sendMessage(String msg) throws IOException {
         out.println(msg);
-        String resp = in.readLine();
-        return resp;
+        return in.readLine();
     }
 
     /**
@@ -46,5 +45,9 @@ public class SimpleClient {
         in.close();
         out.close();
         clientSocket.close();
+    }
+
+    public Socket getClientSocket() {
+        return clientSocket;
     }
 }
